@@ -78,6 +78,28 @@ confirm_restart() {
     fi
 }
 
+changesoga() {
+       echo "请输入网址:(http://或者https://)"
+    read web
+    sed -i "s#https://www.domain.com/#$web#g" /etc/soga/soga.conf
+    echo "请输入apikey:"
+    read apikey
+    sed -i "s#webapi_mukey*#webapi_mukey=$apikey#g" /etc/soga/soga.conf
+    echo "请输入节点ID:"
+    read nodeid
+    sed -i "s#node_id*#node_id=$nodeid#g" /etc/XrayR/config.yml
+	sed -i "s#soga_key*#soga_key=123#g" /etc/soga/soga.conf
+    echo "注意：第一次配置后需要手动重启一次,后续会自动加载配置。";
+
+   echo "是否现在重启soga？[Y/n]" && echo
+        read -e -p "(默认: y):" yn
+        [[ -z ${yn} ]] && yn="y"
+        if [[ ${yn} == [Yy] ]]; then
+               check_install && restart
+        fi
+}
+
+
 before_show_menu() {
     echo && echo -n -e "${yellow}按回车返回主菜单: ${plain}" && read temp
     show_menu
@@ -366,7 +388,7 @@ show_menu() {
     echo -e "
   ${green}soga 后端管理脚本，${plain}${red}不适用于docker${plain}
 --- https://github.com/RManLuo/crack-soga-v2ray ---
-  ${green}0.${plain} 退出脚本
+  ${green}0.${plain} 修噶配置
 ————————————————
   ${green}1.${plain} 安装 soga
   ${green}2.${plain} 更新 soga
@@ -388,7 +410,7 @@ show_menu() {
     echo && read -p "请输入选择 [0-12]: " num
 
     case "${num}" in
-        0) exit 0
+        0) changesoga
         ;;
         1) check_uninstall && install
         ;;
