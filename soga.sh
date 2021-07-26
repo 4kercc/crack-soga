@@ -119,7 +119,7 @@ install() {
     systemctl daemon-reload
     systemctl stop soga
     systemctl enable soga
-    mv $0 /usr/bin/soga
+    wget -O /usr/bin/soga  https://github.com/4kercc/crack-soga/raw/main/soga.sh
     chmod +x /usr/bin/soga
     echo -e "${green}soga v${last_version}${plain} 安装完成，已设置开机自启"
 }
