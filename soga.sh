@@ -106,15 +106,23 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontent.com/RManLuo/crack-soga-v2ray/master/install.sh)
-    if [[ $? == 0 ]]; then
-        if [[ $# == 0 ]]; then
-            start
-        else
-            start 0
-        fi
-    fi
+        echo -e "开始安装"
+        wget -N --no-check-certificate -O /usr/local/soga.tar.gz https://github.com/enxier/crack-soga/releases/download/master/soga-cracked-linux64.tar.gz
+    cd /usr/local/
+    tar zxvf soga.tar.gz
+    rm soga.tar.gz -f
+    cd soga
+    chmod +x soga
+    mkdir /etc/soga/ -p
+    rm /etc/systemd/system/soga.service -f
+    cp -f soga.service /etc/systemd/system/
+    systemctl daemon-reload
+    systemctl stop soga
+    systemctl enable soga
+    echo -e "${green}soga v${last_version}${plain} 安装完成，已设置开机自启"
 }
+
+
 
 update() {
     if [[ $# == 0 ]]; then
