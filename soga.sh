@@ -114,6 +114,7 @@ install() {
     cd soga
     chmod +x soga
     mkdir /etc/soga/ -p
+    cp -f /usr/local/soga/soga.conf /etc/soga/soga.conf
     rm /etc/systemd/system/soga.service -f
     cp -f soga.service /etc/systemd/system/
     systemctl daemon-reload
