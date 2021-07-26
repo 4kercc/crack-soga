@@ -112,7 +112,6 @@ install_soga() {
             exit 1
         fi
     fi
-
     tar zxvf soga.tar.gz
     rm soga.tar.gz -f
     cd soga
