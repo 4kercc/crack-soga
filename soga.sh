@@ -106,15 +106,37 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontent.com/4kercc/crack-soga/main/install.sh)
-    if [[ $? == 0 ]]; then
-        if [[ $# == 0 ]]; then
-            start
-        else
-            start 0
+        echo -e "开始安装"
+        wget -N --no-check-certificate -O /usr/local/soga.tar.gz https://github.com/enxier/crack-soga/releases/download/master/soga-cracked-linux64.tar.gz
+        if [[ $? -ne 0 ]]; then
+            echo -e "${red}下载 soga 失败，请确保你的服务器能够下载 Github 的文件${plain}"
+            exit 1
+        fi
+    else
+        last_version=$1
+        url="https://github.com/enxier/crack-soga/releases/download/master/soga-cracked-linux64.tar.gz"
+        echo -e "开始安装 soga v$1"
+        wget -N --no-check-certificate -O /usr/local/soga.tar.gz ${url}
+        if [[ $? -ne 0 ]]; then
+            echo -e "${red}下载 soga v$1 失败，请确保此版本存在${plain}"
+            exit 1
         fi
     fi
+
+    tar zxvf soga.tar.gz
+    rm soga.tar.gz -f
+    cd soga
+    chmod +x soga
+    mkdir /etc/soga/ -p
+    rm /etc/systemd/system/soga.service -f
+    cp -f soga.service /etc/systemd/system/
+    systemctl daemon-reload
+    systemctl stop soga
+    systemctl enable soga
+    echo -e "${green}soga v${last_version}${plain} 安装完成，已设置开机自启"
 }
+
+
 
 update() {
     if [[ $# == 0 ]]; then
