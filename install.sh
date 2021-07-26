@@ -102,17 +102,7 @@ install_soga() {
             echo -e "${red}下载 soga 失败，请确保你的服务器能够下载 Github 的文件${plain}"
             exit 1
         fi
-    else
-        last_version=$1
-        url="https://github.com/RManLuo/crack-soga-v2ray/releases/download/${last_version}/soga-cracked-linux64.tar.gz"
-        echo -e "开始安装 soga v$1"
-        wget -N --no-check-certificate -O /usr/local/soga.tar.gz ${url}
-        if [[ $? -ne 0 ]]; then
-            echo -e "${red}下载 soga v$1 失败，请确保此版本存在${plain}"
-            exit 1
         fi
-    fi
-
     tar zxvf soga.tar.gz
     rm soga.tar.gz -f
     cd soga
