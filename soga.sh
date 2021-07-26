@@ -388,7 +388,7 @@ show_menu() {
     echo -e "
   ${green}soga 后端管理脚本，${plain}${red}不适用于docker${plain}
 --- https://github.com/RManLuo/crack-soga-v2ray ---
-  ${green}0.${plain} 修噶配置
+  ${green}0.${plain} 修改配置
 ————————————————
   ${green}1.${plain} 安装 soga
   ${green}2.${plain} 更新 soga
