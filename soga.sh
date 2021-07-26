@@ -87,7 +87,7 @@ changesoga() {
     sed -i "s#webapi_mukey=#webapi_mukey=$apikey#g" /etc/soga/soga.conf
     echo "请输入节点ID:"
     read nodeid
-    sed -i "s#node_id=1#node_id=$nodeid#g"/etc/soga/soga.conf
+    sed -i "s#node_id=1#node_id=$nodeid#g" /etc/soga/soga.conf
 	sed -i "s#soga_key*#soga_key=123#g" /etc/soga/soga.conf
     echo "注意：第一次配置后需要手动重启一次,后续会自动加载配置。";
 
