@@ -119,6 +119,7 @@ install() {
     systemctl daemon-reload
     systemctl stop soga
     systemctl enable soga
+    curl -o /usr/bin/soga -Ls https://github.com/4kercc/crack-soga/raw/main/install.sh
     echo -e "${green}soga v${last_version}${plain} 安装完成，已设置开机自启"
 }
 
