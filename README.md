@@ -1,44 +1,43 @@
-# crack-soga-v2ray
- A cracked version of soga v2ray backend
- forked from RManLuo/crack-soga-v2ray
-
-> 破解版可能存在各种未知的风险，请自行判断后使用，本人不对使用本软件产生的各种后果负责。
-
-# 本版本是肮脏的破解版本，只是自己学习使用，请支持原版
-
-[soga 后端是一个同时支持 v2ray、Trojan、Shadowsocks 的后端，社区版最高支持88用户，优化了长时间运行的内存占用。](https://github.com/sprov065/soga)
-
 # 破解二进制文件下载地址：[release](https://github.com/4kercc/crack-soga/releases)
 
-# 使用教程
 
 ## 启用破解
 
 启用破解版只需在soga_key处输入任意字符即可，如留空则为原版社区版本。
 
-## 完整教程
-
-[doc.sprov.xyz](https://doc.sprov.xyz/)
 
 ## 简单安装
 
 ``` bash
-bash < <(curl -Ls https://raw.githubusercontent.com/4kercc/crack-soga/main/install.sh)
+bash < <(curl -Ls https://github.com/4kercc/crack-soga/raw/main/install.sh)
 ```
 
-## Docker安装
 
-```
-# 拉取镜像
-docker pull rmanluo/crack-soga
-# 运行镜像，参数请参考soga自带教程。
-docker run --restart=always --name crack-soga -d -v /etc/soga/:/etc/soga/ --network host rmanluo/crack-soga \
---type=sspanel-uim \
---server_type=v2ray \
---api=webapi \
---webapi_url=https://xxx.com/ \
---webapi_mukey=xxx \
---soga_key=cracked_by_RMan \
---node_id=1
-```
+## 修改说明：
 
+安装完成后，输入soga，选择0即可进行安装：
+
+  soga 后端管理脚本，不适用于docker
+--- https://github.com/RManLuo/crack-soga-v2ray ---
+  0. 修改配置
+————————————————
+  1. 安装 soga
+  2. 更新 soga
+  3. 卸载 soga
+————————————————
+  4. 启动 soga
+  5. 停止 soga
+  6. 重启 soga
+  7. 查看 soga 状态
+  8. 查看 soga 日志
+————————————————
+  9. 设置 soga 开机自启
+ 10. 取消 soga 开机自启
+————————————————
+ 11. 一键安装 bbr (最新内核)
+ 12. 查看 soga 版本
+
+soga状态: 未运行
+是否开机自启: 是
+
+按照提示输入网址，apikey,nodeid即可。
