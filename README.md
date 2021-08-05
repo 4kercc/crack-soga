@@ -17,4 +17,13 @@ bash < <(curl -Ls https://github.com/4kercc/crack-soga/raw/main/install.sh)
 
 安装完成后，输入soga，选择0即可进行安装。
 
-按照提示输入网址，apikey,nodeid即可。
+按照提示输入网址，apikey，nodeid即可：
+
+``` bash
+请输入网址:(http://或者https://)
+http://cikeblog.com
+请输入apikey:
+123
+请输入节点ID:
+123
+```
